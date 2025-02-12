@@ -1,14 +1,14 @@
 pipeline {
-    agent { docker { image 'maven:3.9.9-eclipse-temurin-21-alpine' } }
+    agent any
     stages {
         stage('Stage 1') {
             steps {
                 echo 'Hello world2!'
             }
         }
-                stage('build') {
+                stage('Build') {
                     steps {
-                        sh 'mvn --version'
+                        sh 'mvn -B -DskipTests clean package'
                     }
                 }
     }
