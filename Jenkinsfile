@@ -10,7 +10,7 @@ pipeline {
       steps {
         git url: 'https://github.com/kabanenkonikita/demo'
         withMaven {
-         cmd "mvn clean verify"
+         powershell "mvn clean verify"
         } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
       }
                 }
