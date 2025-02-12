@@ -7,9 +7,12 @@ pipeline {
             }
         }
                 stage('Build') {
-                    steps {
-                        sh 'mvn -B -DskipTests clean package'
-                    }
+      steps {
+        git url: 'https://github.com/kabanenkonikita/demo'
+        withMaven {
+          sh "mvn clean verify"
+        } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
+      }
                 }
     }
 }
